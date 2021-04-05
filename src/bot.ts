@@ -13,7 +13,7 @@ client.on('ready', () => {
 });
 
 client.on('message', (message: Message) => {
-    if (message.content.startsWith(`${PREFIX}${MEGAE}`)) {
+    if (message.content.toUpperCase().startsWith(`${PREFIX}${MEGAE}`)) {
         price(message);
     }
 });
