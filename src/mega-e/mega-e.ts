@@ -90,9 +90,14 @@ export const price = async (message: Message) => {
       inline: true,
     },
     {
-      name: "Donations Appreciated :pray: (TRX)",
-      value: `TTurENnD1KqMtPaa5BihBfb4R5ptEiMmGH`,
-      inline: false,
+      name: "All Time Low 24hs: (USD):",
+      value: `${data.market_data.low_24h.usd}`,
+      inline: true,
+    },
+    {
+      name: "All Time High 24hs: (USD):",
+      value: `${data.market_data.high_24h.usd}`,
+      inline: true,
     }
   );
   message.reply(embed);
