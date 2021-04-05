@@ -1,7 +1,0 @@
-{
-    "PREFIX": "!!",
-    "MEGAE": "MEGA-E",
-    "API_BASE_URL": "api.coingecko.com/api/v3/",
-    "API_COINS": "coins/",
-    "API_MEGACRYPTOPOLIS_E": "megacryptopolis"
-}
