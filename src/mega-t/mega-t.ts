@@ -1,6 +1,5 @@
 import { Message, MessageEmbed } from "discord.js";
 import { JUSTSWAP_URL_MEGA_T } from "../config.json";
-import { MegaResultData } from "./interfaces";
 
 export const price = async (message: Message) => {
   const embed: MessageEmbed = await buildMessage();
