@@ -17,7 +17,6 @@ export const price = async (message: Message) => {
     const megaPrice = splittedData![0];
     const trxPrice = splittedData![1];
     return {
-      data,
       megaPrice,
       trxPrice,
     };
