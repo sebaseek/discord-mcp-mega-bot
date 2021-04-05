@@ -1,5 +1,5 @@
 import { Message, MessageEmbed } from "discord.js";
-import { JUSTSWAP_URL_MEGA_T } from "../config.json";
+import { JUSTSWAP_URL_MEGA_T, COLOR_EMBEDED } from "../config.json";
 
 export const price = async (message: Message) => {
   const embed: MessageEmbed = await buildMessage();
@@ -9,6 +9,7 @@ export const price = async (message: Message) => {
 const buildMessage = async () => {
   const embed: MessageEmbed = new MessageEmbed();
   embed.setTitle(`JustSwap`);
+  embed.setColor(COLOR_EMBEDED);
   embed.setDescription(
     `Unfortunately, Mega-T Token has not been listed yet. Until then, please visit JustSwap to get more information`
   );

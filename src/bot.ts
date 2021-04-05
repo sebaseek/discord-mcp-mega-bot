@@ -1,11 +1,15 @@
 import { config } from "dotenv";
 config();
 
-import { PREFIX, MEGAE, MEGAT, HELP } from "./config.json";
+import { PREFIX, MEGAE, MEGAT, DOC, HELP, SUPPORT } from "./config.json";
 import { price as priceMegaE } from "./mega-e/mega-e";
 import { price as priceMegaT } from "./mega-t/mega-t";
 import { Client, Message } from "discord.js";
-import { help } from "./utils/utils";
+import {
+  sendDocumentLink,
+  sendHelpData,
+  sendDonationText,
+} from "./utils/utils";
 const client: Client = new Client();
 
 client.login(process.env.DISCORD_TOKEN);
@@ -28,9 +32,23 @@ client.on("message", (message: Message) => {
   }
 });
 
-// Mega TRX version price call
+// Documentation link call
+client.on("message", (message: Message) => {
+  if (message.content.toUpperCase().startsWith(`${PREFIX}${DOC}`)) {
+    sendDocumentLink(message);
+  }
+});
+
+// Help data Call
 client.on("message", (message: Message) => {
   if (message.content.toUpperCase().startsWith(`${PREFIX}${HELP}`)) {
-    help(message);
+    sendHelpData(message);
+  }
+});
+
+// Support Text ( Donations )
+client.on("message", (message: Message) => {
+  if (message.content.toUpperCase().startsWith(`${PREFIX}${SUPPORT}`)) {
+    sendDonationText(message);
   }
 });

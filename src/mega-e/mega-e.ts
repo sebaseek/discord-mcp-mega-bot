@@ -3,11 +3,11 @@ import {
   API_COINS,
   API_MEGACRYPTOPOLIS_E,
   EMPTY_SPACE,
+  COLOR_EMBEDED,
 } from "../config.json";
-import { Client, Message, MessageEmbed } from "discord.js";
+import { Message, MessageEmbed } from "discord.js";
 import fetch from "node-fetch";
 import { ServerResponse } from "./interfaces";
-import { MessageAttachment } from "discord.js";
 
 export const price = async (message: Message) => {
   const response = await fetch(
@@ -16,6 +16,7 @@ export const price = async (message: Message) => {
   const data: ServerResponse = await response.json();
   const embed: MessageEmbed = new MessageEmbed();
   embed.setThumbnail(`${data.image.small}`);
+  embed.setColor(COLOR_EMBEDED);
   embed.setTitle(`Coingecko`);
   embed.setURL(`https://www.coingecko.com/en/coins/megacryptopolis`);
   embed.addFields(
