@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node dist/bot.js",
+    "start": "nodemon --inspect dist/bot.js",
     "dev": "nodemon -e ts --exec \"npm run build && npm start\""
   },
   "keywords": [],

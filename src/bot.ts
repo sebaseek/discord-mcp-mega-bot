@@ -2,7 +2,7 @@ import {config} from 'dotenv';
 config();
 
 import {PREFIX, MEGAE} from './config.json';
-import {price} from './mega-e'
+import {price} from './mega-e/mega-e'
 import { Client, Message } from 'discord.js';
 const client: Client = new Client();
 
