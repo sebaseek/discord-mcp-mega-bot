@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "nodemon --inspect dist/bot.js",
+    "start": "node dist/bot.js",
     "dev": "nodemon -e ts --exec \"npm run build && npm start\""
   },
   "keywords": [],
@@ -15,10 +15,12 @@
   "dependencies": {
     "@types/node-fetch": "^2.5.9",
     "discord.js": "^12.5.3",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "puppeteer": "^8.0.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.37",
+    "@types/puppeteer": "^5.4.3",
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.7",
     "ts-node": "^9.1.1",

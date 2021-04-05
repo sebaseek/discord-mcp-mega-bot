@@ -1,9 +1,11 @@
 {
     "PREFIX": "!",
     "MEGAE": "MEGA-E",
+    "MEGAT": "MEGA-T",
     "PRICE": "P",
     "API_BASE_URL": "https://api.coingecko.com/api/v3/",
     "API_COINS": "coins/",    
     "API_MEGACRYPTOPOLIS_E": "megacryptopolis",
-    "EMPTY_SPACE": "\u200B"
+    "EMPTY_SPACE": "\u200B",
+    "JUSTSWAP_URL_MEGA_T": "https://justswap.io/?lang=en-US#/scan/detail/trx/TWdSpDKepd6BnHFwzgYFQz2GY9qRrZAiUB"
 }

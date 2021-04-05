@@ -1,8 +1,9 @@
 import {config} from 'dotenv';
 config();
 
-import {PREFIX, MEGAE} from './config.json';
-import {price} from './mega-e/mega-e'
+import {PREFIX, MEGAE, MEGAT} from './config.json';
+import {price as priceMegaE} from './mega-e/mega-e'
+import {price as priceMegaT} from './mega-t/mega-t'
 import { Client, Message } from 'discord.js';
 const client: Client = new Client();
 
@@ -14,7 +15,10 @@ client.on('ready', () => {
 
 client.on('message', (message: Message) => {
     if (message.content.toUpperCase().startsWith(`${PREFIX}${MEGAE}`)) {
-        price(message);
+        priceMegaE(message);
+    }
+    if (message.content.toUpperCase().startsWith(`${PREFIX}${MEGAT}`)) {
+        priceMegaT(message);
     }
 });
 
