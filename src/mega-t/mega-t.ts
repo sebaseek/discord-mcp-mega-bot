@@ -8,7 +8,7 @@ export const price = async (message: Message) => {
   const page = await browser.newPage();
   await page.goto(`${JUSTSWAP_URL_MEGA_T}`);
   // wait page to load data
-  await page.waitForTimeout(2500);
+  await page.waitForTimeout(3000);
   const result = await page.evaluate(() => {
     // Get Just Swap div with price elements
     const data = document.querySelector(".pr-price")?.textContent;
@@ -25,7 +25,7 @@ export const price = async (message: Message) => {
   embed.setURL(`${JUSTSWAP_URL_MEGA_T}`);
   embed.addFields(
     { name: "Mega Price", value: `${result.megaPrice}` },
-    { name: "TRX Price", value: `1 TRX = ${result.trxPrice}` }
+    { name: "TRX Price", value: `1 TRX ${result.trxPrice}` }
   );
   message.reply(embed);
 };
