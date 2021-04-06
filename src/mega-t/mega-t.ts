@@ -29,7 +29,17 @@ const takeScreenshot = async () => {
     // Mobile viewport ( Iphone X)
     const browser = await puppeteer.launch({
         headless: true,
-        args: ["--window-size=375,812", "--no-sandbox", "--disable-setuid-sandbox"],
+        slowMo: 75, // slow down by 250ms
+        args: [
+            "--window-size=375,812",
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-dev-shm-usage",
+            "--no-first-run",
+            "--no-zygote",
+            "--headless",
+            "--disable-gpu",
+        ],
         ignoreDefaultArgs: ["--disable-extensions"],
     });
     const page = await browser.newPage();
