@@ -11,14 +11,17 @@ export const price = async (message: Message) => {
 };
 
 const sendMessage = async ({ screenshotUrl }: ScreenshotData, message: Message) => {
-    message.channel.send({
+    // Send image as attachment
+    await message.channel.send({
         files: [
             {
-                attachment: `${screenshotUrl}`,
-                name: `${screenshotUrl}`,
+                attachment: screenshotUrl,
+                name: screenshotUrl,
             },
         ],
     });
+    // Remove Screenshot from local storage
+    fs.unlinkSync(screenshotUrl);
 };
 
 const takeScreenshot = async () => {
@@ -30,6 +33,7 @@ const takeScreenshot = async () => {
     await page.waitForTimeout(2000);
     //Focus Price Div
     await page.focus(".pr-l");
+    // Create file
     fs.writeFileSync(screenshotUrl, "base64");
 
     await page.screenshot({
