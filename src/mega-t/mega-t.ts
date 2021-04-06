@@ -27,7 +27,11 @@ const sendMessage = async ({ screenshotUrl }: ScreenshotData, message: Message) 
 const takeScreenshot = async () => {
     const screenshotUrl: string = `screenshots/mega-trx${getTime()}.png`;
     // Mobile viewport ( Iphone X)
-    const browser = await puppeteer.launch({ args: ["--window-size=375,812"] });
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ["--window-size=375,812", "--no-sandbox", "--disable-setuid-sandbox"],
+        ignoreDefaultArgs: ["--disable-extensions"],
+    });
     const page = await browser.newPage();
     await page.goto(JUSTSWAP_URL_MEGA_T, { waitUntil: "networkidle2" });
     await page.waitForTimeout(2000);
