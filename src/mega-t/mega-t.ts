@@ -1,18 +1,43 @@
 import { Message, MessageEmbed } from "discord.js";
 import { JUSTSWAP_URL_MEGA_T, COLOR_EMBEDED } from "../config.json";
+import puppeteer from "puppeteer";
+import { getTime } from "../utils/utils";
+import fs from "fs";
+import { ScreenshotData } from "./interfaces";
 
 export const price = async (message: Message) => {
-  const embed: MessageEmbed = await buildMessage();
-  message.reply(embed);
+    const screenshot: ScreenshotData = await takeScreenshot();
+    await sendMessage(screenshot, message);
 };
 
-const buildMessage = async () => {
-  const embed: MessageEmbed = new MessageEmbed();
-  embed.setTitle(`JustSwap`);
-  embed.setColor(COLOR_EMBEDED);
-  embed.setDescription(
-    `Unfortunately, Mega-T Token has not been listed yet. Until then, please visit JustSwap to get more information`
-  );
-  embed.setURL(`${JUSTSWAP_URL_MEGA_T}`);
-  return embed;
+const sendMessage = async ({ screenshotUrl }: ScreenshotData, message: Message) => {
+    message.channel.send({
+        files: [
+            {
+                attachment: `${screenshotUrl}`,
+                name: `${screenshotUrl}`,
+            },
+        ],
+    });
+};
+
+const takeScreenshot = async () => {
+    const screenshotUrl: string = `screenshots/mega-trx${getTime()}.png`;
+    // Mobile viewport ( Iphone X)
+    const browser = await puppeteer.launch({ args: ["--window-size=375,812"] });
+    const page = await browser.newPage();
+    await page.goto(JUSTSWAP_URL_MEGA_T, { waitUntil: "networkidle2" });
+    await page.waitForTimeout(2000);
+    //Focus Price Div
+    await page.focus(".pr-l");
+    fs.writeFileSync(screenshotUrl, "base64");
+
+    await page.screenshot({
+        path: screenshotUrl,
+        clip: { x: 310, y: 90, width: 600, height: 210 },
+    });
+    await browser.close();
+    return {
+        screenshotUrl,
+    };
 };
