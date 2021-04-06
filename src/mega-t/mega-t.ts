@@ -29,18 +29,7 @@ const takeScreenshot = async () => {
     // Mobile viewport ( Iphone X)
     const browser = await puppeteer.launch({
         headless: true,
-        slowMo: 75, // slow down by 250ms
-        args: [
-            "--window-size=375,812",
-            "--no-sandbox",
-            "--disable-setuid-sandbox",
-            "--disable-dev-shm-usage",
-            "--no-first-run",
-            "--no-zygote",
-            "--headless",
-            "--disable-gpu",
-        ],
-        ignoreDefaultArgs: ["--disable-extensions"],
+        args: ["--window-size=375,812", "--no-sandbox"],
     });
     const page = await browser.newPage();
     await page.goto(JUSTSWAP_URL_MEGA_T, { waitUntil: "networkidle2" });
