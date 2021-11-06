@@ -33,7 +33,7 @@ const takeScreenshot = async () => {
     });
     const page = await browser.newPage();
     await page.goto(JUSTSWAP_URL_MEGA_T, { waitUntil: "networkidle2" });
-    await page.waitForTimeout(10000);
+    await page.waitForTimeout(15000);
     //Focus Price Div
     await page.focus(".pr-l");
     // Create file
@@ -41,7 +41,7 @@ const takeScreenshot = async () => {
 
     await page.screenshot({
         path: screenshotUrl,
-        clip: { x: 210, y: 90, width: 620, height: 210 },
+        clip: { x: 250, y: 90, width: 620, height: 210 },
     });
     await browser.close();
     return {
