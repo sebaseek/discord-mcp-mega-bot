@@ -32,7 +32,7 @@ const takeScreenshot = async () => {
         args: ["--window-size=375,812", "--no-sandbox"],
     });
     const page = await browser.newPage();
-    await page.goto(JUSTSWAP_URL_MEGA_T, { waitUntil: "networkidle2" });
+    await page.goto(JUSTSWAP_URL_MEGA_T, { waitUntil: "networkidle" });
     await page.waitForTimeout(15000);
     //Focus Price Div
     await page.focus(".pr-l");
