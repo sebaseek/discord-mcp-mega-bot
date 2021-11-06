@@ -41,7 +41,7 @@ const takeScreenshot = async () => {
 
     await page.screenshot({
         path: screenshotUrl,
-        clip: { x: 310, y: 90, width: 620, height: 210 },
+        clip: { x: 210, y: 90, width: 620, height: 210 },
     });
     await browser.close();
     return {
