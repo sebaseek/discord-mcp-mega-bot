@@ -28,13 +28,14 @@ const takeScreenshot = async () => {
     const screenshotUrl: string = `screenshots/mega-trx${getTime()}.png`;
     // Mobile viewport ( Iphone X)
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
 	args: [
           "--window-size=375,812",
           '--no-sandbox'],
     });
     const page = await browser.newPage();
-    await page.goto(JUSTSWAP_URL_MEGA_T, {waitUntil: ['load', 'domcontentloaded']});
+    await page.setUserAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36");
+    await page.goto(JUSTSWAP_URL_MEGA_T, {waitUntil: ['networkidle2']});
     // await page.waitForTimeout(16000);
     //Focus Price Div
     await page.focus(".pr-l");
