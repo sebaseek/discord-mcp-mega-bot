@@ -29,11 +29,13 @@ const takeScreenshot = async () => {
     // Mobile viewport ( Iphone X)
     const browser = await puppeteer.launch({
         headless: true,
-        args: ["--window-size=375,812", "--no-sandbox"],
+	args: [
+          "--window-size=375,812",
+          '--no-sandbox'],
     });
     const page = await browser.newPage();
-    await page.goto(JUSTSWAP_URL_MEGA_T, { waitUntil: "networkidle" });
-    await page.waitForTimeout(15000);
+    await page.goto(JUSTSWAP_URL_MEGA_T, {waitUntil: ['load', 'domcontentloaded']});
+    // await page.waitForTimeout(16000);
     //Focus Price Div
     await page.focus(".pr-l");
     // Create file
